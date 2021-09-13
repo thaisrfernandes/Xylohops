@@ -10,7 +10,7 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
-    let playerSize = CGSize(width: 30, height: 30)
+    let playerSize = CGSize(width: 50, height: 69)
     let playerSpeed: CGFloat = 5
     var isJumping: Bool = false
     var lastTouchPoint: CGPoint?
@@ -18,7 +18,7 @@ class Player: SKSpriteNode {
     
     init() {
         let texture = SKTexture(imageNamed: "coelho")
-        let size = CGSize(width: 30, height: 30)
+        let size = CGSize(width: 50, height: 69)
         
         super.init(texture: texture, color: .clear, size: size)
         
@@ -39,7 +39,7 @@ class Player: SKSpriteNode {
         let physicsBody = SKPhysicsBody(rectangleOf: playerSize)
         physicsBody.isDynamic = true
         physicsBody.usesPreciseCollisionDetection = true
-        physicsBody.velocity = CGVector(dx: 5, dy: 5)
+        physicsBody.velocity = CGVector(dx: 10, dy: 10)
         physicsBody.categoryBitMask = Bitmasks.playerCategory
         physicsBody.collisionBitMask = Bitmasks.platformCategory
         physicsBody.contactTestBitMask = Bitmasks.platformCategory
@@ -49,7 +49,7 @@ class Player: SKSpriteNode {
     }
     
     private func startDefaultJumping() {
-        let action = SKAction.repeatForever(SKAction.applyImpulse(CGVector(dx: 0, dy: 20), duration: 0.8))
+        let action = SKAction.repeatForever(SKAction.applyImpulse(CGVector(dx: 0, dy: 80), duration: 1.0))
         self.run(action)
     }
     
@@ -74,10 +74,11 @@ class Player: SKSpriteNode {
         
         let maxRightX = ScreenSize.width/2
         let maxLeftX = maxRightX * -1
-        
+                
         if newPosition > maxLeftX && newPosition < maxRightX {
             self.position.x = newPosition
         }
+        
     }
     
     func jump(touchPoint: CGPoint) {
@@ -88,7 +89,7 @@ class Player: SKSpriteNode {
 
             self.removeAllActions()
             
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 80))
         }
     }
     

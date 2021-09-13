@@ -11,4 +11,5 @@ enum NodeNames: String {
     case ground = "Ground"
     case player = "Player"
     case platform = "Platform"
+    case wall = "Wall"
 }
