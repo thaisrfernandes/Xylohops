@@ -19,13 +19,13 @@ enum Note: String {
     
     var filename: String {
         switch self {
-            case .C: return "C.mp3"
-            case .D: return "D.mp3"
-            case .E: return "E.mp3"
-            case .F: return "F.mp3"
-            case .G: return "G.mp3"
-            case .A: return "A.mp3"
-            case .B: return "B.mp3"
+            case .C: return "C.wav"
+            case .D: return "D.wav"
+            case .E: return "E.wav"
+            case .F: return "F.wav"
+            case .G: return "G.wav"
+            case .A: return "A.wav"
+            case .B: return "B.wav"
         }
     }
     

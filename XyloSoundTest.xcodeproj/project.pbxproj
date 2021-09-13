@@ -25,13 +25,13 @@
 		8982954F26EECB0000B75BFE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982954E26EECB0000B75BFE /* DataManager.swift */; };
 		8982955126EECB4300B75BFE /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982955026EECB4300B75BFE /* Notes.swift */; };
 		8982955326EECCD800B75BFE /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982955226EECCD800B75BFE /* Score.swift */; };
-		89D305EE26EF09AA00445893 /* G.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 89D305E726EF09A900445893 /* G.mp3 */; };
-		89D305EF26EF09AA00445893 /* F.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 89D305E826EF09AA00445893 /* F.mp3 */; };
-		89D305F026EF09AA00445893 /* C.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 89D305E926EF09AA00445893 /* C.mp3 */; };
-		89D305F126EF09AA00445893 /* B.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 89D305EA26EF09AA00445893 /* B.mp3 */; };
-		89D305F226EF09AA00445893 /* A.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 89D305EB26EF09AA00445893 /* A.mp3 */; };
-		89D305F326EF09AA00445893 /* D.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 89D305EC26EF09AA00445893 /* D.mp3 */; };
-		89D305F426EF09AA00445893 /* E.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 89D305ED26EF09AA00445893 /* E.mp3 */; };
+		89BD002726EFB1DD00D77CDB /* C.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002026EFB1DC00D77CDB /* C.wav */; };
+		89BD002826EFB1DD00D77CDB /* D.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002126EFB1DD00D77CDB /* D.wav */; };
+		89BD002926EFB1DD00D77CDB /* F.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002226EFB1DD00D77CDB /* F.wav */; };
+		89BD002A26EFB1DD00D77CDB /* G.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002326EFB1DD00D77CDB /* G.wav */; };
+		89BD002B26EFB1DD00D77CDB /* A.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002426EFB1DD00D77CDB /* A.wav */; };
+		89BD002C26EFB1DD00D77CDB /* B.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002526EFB1DD00D77CDB /* B.wav */; };
+		89BD002D26EFB1DD00D77CDB /* E.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002626EFB1DD00D77CDB /* E.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,13 +55,13 @@
 		8982954E26EECB0000B75BFE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8982955026EECB4300B75BFE /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		8982955226EECCD800B75BFE /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
-		89D305E726EF09A900445893 /* G.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G.mp3; sourceTree = "<group>"; };
-		89D305E826EF09AA00445893 /* F.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = F.mp3; sourceTree = "<group>"; };
-		89D305E926EF09AA00445893 /* C.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = C.mp3; sourceTree = "<group>"; };
-		89D305EA26EF09AA00445893 /* B.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = B.mp3; sourceTree = "<group>"; };
-		89D305EB26EF09AA00445893 /* A.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = A.mp3; sourceTree = "<group>"; };
-		89D305EC26EF09AA00445893 /* D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = D.mp3; sourceTree = "<group>"; };
-		89D305ED26EF09AA00445893 /* E.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = E.mp3; sourceTree = "<group>"; };
+		89BD002026EFB1DC00D77CDB /* C.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C.wav; sourceTree = "<group>"; };
+		89BD002126EFB1DD00D77CDB /* D.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D.wav; sourceTree = "<group>"; };
+		89BD002226EFB1DD00D77CDB /* F.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F.wav; sourceTree = "<group>"; };
+		89BD002326EFB1DD00D77CDB /* G.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G.wav; sourceTree = "<group>"; };
+		89BD002426EFB1DD00D77CDB /* A.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = A.wav; sourceTree = "<group>"; };
+		89BD002526EFB1DD00D77CDB /* B.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = B.wav; sourceTree = "<group>"; };
+		89BD002626EFB1DD00D77CDB /* E.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,13 +169,13 @@
 		89D305D826EF075D00445893 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				89D305EB26EF09AA00445893 /* A.mp3 */,
-				89D305EA26EF09AA00445893 /* B.mp3 */,
-				89D305E926EF09AA00445893 /* C.mp3 */,
-				89D305EC26EF09AA00445893 /* D.mp3 */,
-				89D305ED26EF09AA00445893 /* E.mp3 */,
-				89D305E826EF09AA00445893 /* F.mp3 */,
-				89D305E726EF09A900445893 /* G.mp3 */,
+				89BD002426EFB1DD00D77CDB /* A.wav */,
+				89BD002526EFB1DD00D77CDB /* B.wav */,
+				89BD002026EFB1DC00D77CDB /* C.wav */,
+				89BD002126EFB1DD00D77CDB /* D.wav */,
+				89BD002626EFB1DD00D77CDB /* E.wav */,
+				89BD002226EFB1DD00D77CDB /* F.wav */,
+				89BD002326EFB1DD00D77CDB /* G.wav */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -237,14 +237,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89D305F026EF09AA00445893 /* C.mp3 in Resources */,
+				89BD002B26EFB1DD00D77CDB /* A.wav in Resources */,
+				89BD002A26EFB1DD00D77CDB /* G.wav in Resources */,
+				89BD002726EFB1DD00D77CDB /* C.wav in Resources */,
+				89BD002C26EFB1DD00D77CDB /* B.wav in Resources */,
+				89BD002826EFB1DD00D77CDB /* D.wav in Resources */,
 				8982952926EEBB4600B75BFE /* Main.storyboard in Resources */,
-				89D305EF26EF09AA00445893 /* F.mp3 in Resources */,
-				89D305F426EF09AA00445893 /* E.mp3 in Resources */,
-				89D305F226EF09AA00445893 /* A.mp3 in Resources */,
-				89D305F126EF09AA00445893 /* B.mp3 in Resources */,
-				89D305F326EF09AA00445893 /* D.mp3 in Resources */,
-				89D305EE26EF09AA00445893 /* G.mp3 in Resources */,
+				89BD002D26EFB1DD00D77CDB /* E.wav in Resources */,
+				89BD002926EFB1DD00D77CDB /* F.wav in Resources */,
 				8982952B26EEBB4800B75BFE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
