@@ -70,7 +70,12 @@ class Player: SKSpriteNode {
         
         let newPosition = self.position.x + position
         
-        self.position.x = newPosition
+        let maxRightX = ScreenSize.width/2
+        let maxLeftX = maxRightX * -1
+                
+        if newPosition > maxLeftX && newPosition < maxRightX {
+            self.position.x = newPosition
+        }
         
     }
     

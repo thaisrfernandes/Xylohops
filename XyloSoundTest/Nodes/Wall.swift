@@ -13,7 +13,7 @@ class Wall: SKSpriteNode {
     init(isLeft : Bool) {
         let size = CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.height)
         
-        super.init(texture: nil, color: .red, size: size)
+        super.init(texture: nil, color: .clear, size: size)
         
         setUp(isLeft: isLeft)
     }
