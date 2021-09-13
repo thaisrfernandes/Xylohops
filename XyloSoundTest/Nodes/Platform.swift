@@ -18,6 +18,8 @@ class Platform: SKNode {
     
     private var playSound: SKAction!
     
+    var note: Note?
+    
     init(note: Note, position: CGPoint) {
         super.init()
 
@@ -28,6 +30,8 @@ class Platform: SKNode {
         self.playSound = SKAction.playSoundFileNamed(note.filename, waitForCompletion: false)
         
         self.platform = SKSpriteNode(color: note.color, size: size)
+        
+        self.note = note
         
         setUp(position: position)
     }

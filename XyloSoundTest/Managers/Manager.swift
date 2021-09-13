@@ -24,9 +24,7 @@ class Manager {
     private func firstLaunch() {
         if !UserDefaults.standard.bool(forKey: "isFirstLaunch") {
             print("This is our first launch")
-            
-            MusicStatus.shared.setSounds(true)
-            
+                        
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
             UserDefaults.standard.synchronize()
         }
@@ -49,12 +47,6 @@ class Manager {
         } else {
             scene.scaleMode = .resizeFill
             fromScene.view?.presentScene(scene)
-        }
-    }
-    
-    func run(_ fileName: String, onNode: SKNode) {
-        if MusicStatus.shared.getSound() {
-            onNode.run(SKAction.playSoundFileNamed(fileName, waitForCompletion: false))
         }
     }
 }

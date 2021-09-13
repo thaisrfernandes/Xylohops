@@ -10,9 +10,10 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private let notes: [Note] = [.A, .B, .C, .D]
+    //MARK: - Properties
     
-    private var hasPlayedSound = false
+    private let notes: [Note] = [.A, .B, .C, .D]
+        
     private var score: Int = 0 {
         didSet {
             if score > 0 {
@@ -21,11 +22,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    private let scoreManager = ScoreManager()
+    
+    //MARK: - Nodes
+    
     private var ground: Ground!
     private var player: Player!
     private var platform: Platform!
     private var leftWall: Wall!
     private var rightWall: Wall!
+    private var scoreFeedback: ScoreFeedback!
+    
+    
+    //MARK: - Setup
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -36,13 +45,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.platform = Platform(note: notes[0], position: CGPoint(x: ScreenSize.width/4, y: -(ScreenSize.height/2.4)))
         self.leftWall = Wall(isLeft: true)
         self.rightWall = Wall(isLeft: false)
+        self.scoreFeedback = ScoreFeedback()
+        scoreFeedback.isHidden = true
         
         addChild(ground)
         addChild(player)
         addChild(platform)
         addChild(leftWall)
         addChild(rightWall)
+        addChild(scoreFeedback)
     }
+    
+    //MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touchPoint = touches.first?.location(in: self) else { return }
@@ -54,60 +68,61 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.move(touchPoint: touchPoint)
     }
     
+    //MARK: - Contact Logic
+    
     func didBegin(_ contact: SKPhysicsContact) {
-        player.land()
+        let isPlayerOnTop: Bool = checkIfPlayerIsOnTop(contactInfo: contact)
         
-        if contact.bodyB.categoryBitMask == Bitmasks.platformCategory {
-            let platform = contact.bodyB.node!.parent! as! Platform
-            
-            if platform.hasNotBeenJumpedOn {
-                platform.playNoteSound()
+        if isPlayerOnTop {
+            player.land()
+
+            if contact.bodyB.categoryBitMask == Bitmasks.platformCategory {
+                let platform = contact.bodyB.node!.parent! as! Platform
                 
-                platform.playerJumpedOn()
-                
-                updateScore(platform: platform.platform)
+                if platform.hasNotBeenJumpedOn {
+                    platform.playNoteSound()
+                    
+                    platform.playerJumpedOn()
+                    
+                    let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
+                    
+                    updateScore(with: newScore)
+                }
             }
         }
+        
     }
     
-    func updateScore(platform: SKSpriteNode) {
-        let midpoint: CGFloat = platform.size.width / 2
-        let platformCenter: CGFloat = platform.position.x + midpoint
+    private func checkIfPlayerIsOnTop(contactInfo: SKPhysicsContact) -> Bool {
+        guard let bodyA = contactInfo.bodyA.node, let bodyB = contactInfo.bodyB.node else { return false }
         
-        let playerPosInPlatform = player.position.x - platform.position.x + midpoint
-        let isPlayerOnRightSide: Bool = player.position.x + player.size.width > platformCenter
+        let isGroundContact = bodyA.name == NodeNames.ground.rawValue || bodyB.name == NodeNames.ground.rawValue
         
-        let umterco = midpoint / 3
+        if isGroundContact { return true }
         
-        if isPlayerOnRightSide {
-            let perfectArea = midpoint + umterco
-            let goodArea = perfectArea + umterco
-            
-            // Show on screen?
-            if playerPosInPlatform < perfectArea {
-                let newScore: ScoreType = .perfect
-                self.score += newScore.points
-            } else if playerPosInPlatform < goodArea {
-                let newScore: ScoreType = .good
-                self.score += newScore.points
-            } else {
-                let newScore: ScoreType = .bad
-                self.score += newScore.points
-            }
-        } else {
-            let perfectArea = midpoint - umterco
-            let goodArea = perfectArea - umterco
-            
-            if playerPosInPlatform > perfectArea {
-                let newScore: ScoreType = .perfect
-                self.score += newScore.points
-            } else if playerPosInPlatform > goodArea {
-                let newScore: ScoreType = .good
-                self.score += newScore.points
-            } else {
-                let newScore: ScoreType = .bad
-                self.score += newScore.points
-            }
+        return bodyA.position.y > bodyB.position.y  // Player is always bodyA
+    }
+    
+    //MARK: - Score and Feedback
+    
+    private func updateScore(with newScore: ScoreType) {
+        self.score += newScore.points
+        showFeedback(for: newScore)
+    }
+    
+    private func showFeedback(for score: ScoreType) {
+        let newText = "\(score.rawValue)"
+        
+        self.scoreFeedback.isHidden.toggle()
+        self.scoreFeedback.changeText(with: newText)
+        
+        let scaleAction = SKAction.scale(by: 1.5, duration: 0.5)
+        let fadeOut = SKAction.fadeAlpha(to: 0, duration: 2)
+        let sequence = SKAction.sequence([scaleAction, fadeOut])
+        
+        self.scoreFeedback.run(sequence) {
+            self.scoreFeedback.changeText(with: "")
+            self.scoreFeedback.isHidden.toggle()
         }
     }
 }
