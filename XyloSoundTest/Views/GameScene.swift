@@ -10,9 +10,10 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private let notes: [Note] = [.A, .B, .C, .D]
+    //MARK: - Properties
     
-    private var hasPlayedSound = false
+    private let notes: [Note] = [.A, .B, .C, .D]
+        
     private var score: Int = 0 {
         didSet {
             if score > 0 {
@@ -21,9 +22,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    private let scoreManager = ScoreManager()
+    
+    //MARK: - Nodes
+    
     private var ground: Ground!
     private var player: Player!
     private var platform: Platform!
+    private var scoreFeedback: ScoreFeedback!
+    
+    
+    //MARK: - Setup
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -32,11 +41,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.ground = Ground()
         self.player = Player()
         self.platform = Platform(note: notes[0], position: CGPoint(x: ScreenSize.width/4, y: -(ScreenSize.height/2.4)))
+        self.scoreFeedback = ScoreFeedback()
+        scoreFeedback.isHidden = true
         
         addChild(ground)
         addChild(player)
         addChild(platform)
+        addChild(scoreFeedback)
     }
+    
+    //MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touchPoint = touches.first?.location(in: self) else { return }
@@ -47,6 +61,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let touchPoint = touches.first?.location(in: self) else { return }
         player.move(touchPoint: touchPoint)
     }
+    
+    //MARK: - Contact Logic
     
     func didBegin(_ contact: SKPhysicsContact) {
         player.land()
@@ -59,49 +75,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 platform.playerJumpedOn()
                 
-                updateScore(platform: platform.platform)
+                let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
+                
+                updateScore(with: newScore)
             }
         }
     }
     
-    func updateScore(platform: SKSpriteNode) {
-        let midpoint: CGFloat = platform.size.width / 2
-        let platformCenter: CGFloat = platform.position.x + midpoint
+    //MARK: - Score and Feedback
+    
+    private func updateScore(with newScore: ScoreType) {
+        self.score += newScore.points
+        showFeedback(for: newScore)
+    }
+    
+    private func showFeedback(for score: ScoreType) {
+        self.scoreFeedback.isHidden.toggle()
+        self.scoreFeedback.changeText(with: score.rawValue)
         
-        let playerPosInPlatform = player.position.x - platform.position.x + midpoint
-        let isPlayerOnRightSide: Bool = player.position.x + player.size.width > platformCenter
+        let scaleAction = SKAction.scale(by: 1.5, duration: 0.5)
+        let fadeOut = SKAction.fadeAlpha(to: 0, duration: 2)
+        let sequence = SKAction.sequence([scaleAction, fadeOut])
         
-        let umterco = midpoint / 3
-        
-        if isPlayerOnRightSide {
-            let perfectArea = midpoint + umterco
-            let goodArea = perfectArea + umterco
-            
-            // Show on screen?
-            if playerPosInPlatform < perfectArea {
-                let newScore: ScoreType = .perfect
-                self.score += newScore.points
-            } else if playerPosInPlatform < goodArea {
-                let newScore: ScoreType = .good
-                self.score += newScore.points
-            } else {
-                let newScore: ScoreType = .bad
-                self.score += newScore.points
-            }
-        } else {
-            let perfectArea = midpoint - umterco
-            let goodArea = perfectArea - umterco
-            
-            if playerPosInPlatform > perfectArea {
-                let newScore: ScoreType = .perfect
-                self.score += newScore.points
-            } else if playerPosInPlatform > goodArea {
-                let newScore: ScoreType = .good
-                self.score += newScore.points
-            } else {
-                let newScore: ScoreType = .bad
-                self.score += newScore.points
-            }
+        self.scoreFeedback.run(sequence) {
+            self.scoreFeedback.changeText(with: "")
+            self.scoreFeedback.isHidden.toggle()
         }
     }
 }

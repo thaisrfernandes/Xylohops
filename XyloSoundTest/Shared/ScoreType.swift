@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 enum ScoreType: String {
     case perfect = "Perfect"
     case good = "Good"
@@ -25,5 +24,3 @@ enum ScoreType: String {
         }
     }
 }
-
-
