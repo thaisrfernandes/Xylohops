@@ -15,10 +15,6 @@ class MainMenu: SKScene {
         addPlayButton()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-    }
-    
     func addPlayButton() {
         let playButton = Button(imageNamed: "coelho", buttonAction: {
             Manager.shared.transition(self, toScene: .PlayerScene, transition: SKTransition.fade(withDuration: 1))
