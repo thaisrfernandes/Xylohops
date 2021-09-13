@@ -24,6 +24,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var ground: Ground!
     private var player: Player!
     private var platform: Platform!
+    private var leftWall: Wall!
+    private var rightWall: Wall!
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -32,10 +34,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.ground = Ground()
         self.player = Player()
         self.platform = Platform(note: notes[0], position: CGPoint(x: ScreenSize.width/4, y: -(ScreenSize.height/2.4)))
+        self.leftWall = Wall(isLeft: true)
+        self.rightWall = Wall(isLeft: false)
         
         addChild(ground)
         addChild(player)
         addChild(platform)
+        addChild(leftWall)
+        addChild(rightWall)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

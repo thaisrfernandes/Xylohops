@@ -70,12 +70,8 @@ class Player: SKSpriteNode {
         
         let newPosition = self.position.x + position
         
-        let maxRightX = ScreenSize.width/2
-        let maxLeftX = maxRightX * -1
+        self.position.x = newPosition
         
-        if newPosition > maxLeftX && newPosition < maxRightX {
-            self.position.x = newPosition
-        }
     }
     
     func jump(touchPoint: CGPoint) {
