@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.ground = Ground()
         self.player = Player()
-        self.platform = Platform(note: notes[0], position: CGPoint(x: 100, y: -300))
+        self.platform = Platform(note: notes[0], position: CGPoint(x: ScreenSize.width/4, y: -(ScreenSize.height/2.4)))
         
         addChild(ground)
         addChild(player)
