@@ -9,7 +9,6 @@ import Foundation
 import SpriteKit
 
 class Ground: SKSpriteNode {
-        
     init() {
         let size = CGSize(width: ScreenSize.width, height: ScreenSize.height * 0.1)
         
@@ -32,5 +31,4 @@ class Ground: SKSpriteNode {
         
         self.physicsBody = floorPhysicsBody
     }
-    
 }

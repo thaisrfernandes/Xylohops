@@ -103,7 +103,6 @@
 				8982954426EEBFA500B75BFE /* Manager.swift */,
 				8982954926EEBFEA00B75BFE /* Extensions.swift */,
 				8982951D26EEBB4600B75BFE /* AppDelegate.swift */,
-				8982952326EEBB4600B75BFE /* GameScene.swift */,
 				8982952526EEBB4600B75BFE /* GameViewController.swift */,
 				8982952726EEBB4600B75BFE /* Main.storyboard */,
 				8982952A26EEBB4800B75BFE /* Assets.xcassets */,
@@ -135,6 +134,7 @@
 		8982953E26EEBE8600B75BFE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8982952326EEBB4600B75BFE /* GameScene.swift */,
 				8982953F26EEBE9500B75BFE /* MainMenu.swift */,
 			);
 			path = Views;
