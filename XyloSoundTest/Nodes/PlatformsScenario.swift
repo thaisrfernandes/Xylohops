@@ -16,31 +16,51 @@ class PlatformsScenario: SKSpriteNode {
         
         super.init(texture: nil, color: .black, size: size)
         
+        var lastPosition = CGPoint(x: 0, y: -(ScreenSize.height/2.6))
         
-        let maxRightX = (ScreenSize.width/2)
-        let maxLeftX = maxRightX * -1
-        
-        let maxSpaceBetween: CGFloat = 100.0
-        let minSpaceBetween: CGFloat = 50.0
-        
-        let minY = -(ScreenSize.height/2.6)
-        
-        let lastPosition = CGPoint(x: 0, y: minY)
-        
-        let spaceBetween = CGFloat.random(in: 30...100)
+        let minY: CGFloat = ScreenSize.height/10
         
         for index in 0...(notes.count-1) {
             let note = notes[index]
             
-            let xValue = CGFloat.random(in: maxLeftX...maxRightX)
-            
-            let yValue = index == 0 ? minY : CGFloat.random(in: minSpaceBetween...maxSpaceBetween) + minY
-
             let platform = Platform(note: note)
+                   
+            let platformSize = platform.platform.frame.width
+            let middleOfPlatform = platformSize / 2
+
+            var minX = lastPosition.x + middleOfPlatform
+            var maxX = minX + platformSize
             
-            platform.platform.position = CGPoint(x: xValue, y: yValue)
+            var xValue: CGFloat = 0.0
             
-            self.addChild(platform)
+            if Bool.random() == false {
+                minX *= -1
+                maxX *= -1
+                xValue = CGFloat.random(in: maxX...minX)
+                
+            } else {
+                xValue = CGFloat.random(in: minX...maxX)
+            }
+            
+            let maxRightX: CGFloat = ScreenSize.width / 2
+            let maxLeftX: CGFloat = -(maxRightX)
+
+            if xValue >= maxRightX {
+                xValue = maxRightX - platformSize
+                
+            } else if xValue <= maxLeftX {
+                xValue = maxLeftX + platformSize
+            }
+            
+            let yValue = index == 0 ? lastPosition.y : lastPosition.y + minY
+
+            let position = CGPoint(x: xValue, y: yValue)
+            
+            platform.position = position
+            
+            lastPosition = position
+            
+            addChild(platform)
         }
     }
     

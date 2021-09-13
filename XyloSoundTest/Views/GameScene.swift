@@ -10,10 +10,9 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private let notes: [Note] = [.A, .B]
     //MARK: - Properties
     
-    private let notes: [Note] = [.A, .B, .C, .D]
+    private let notes: [Note] = TwinkleTwinkle().song
         
     private var score: Int = 0 {
         didSet {
