@@ -65,21 +65,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //MARK: - Contact Logic
     
     func didBegin(_ contact: SKPhysicsContact) {
-        player.land()
+        let isPlayerOnTop: Bool = checkIfPlayerIsOnTop(contactInfo: contact)
         
-        if contact.bodyB.categoryBitMask == Bitmasks.platformCategory {
-            let platform = contact.bodyB.node!.parent! as! Platform
-            
-            if platform.hasNotBeenJumpedOn {
-                platform.playNoteSound()
+        if isPlayerOnTop {
+            player.land()
+
+            if contact.bodyB.categoryBitMask == Bitmasks.platformCategory {
+                let platform = contact.bodyB.node!.parent! as! Platform
                 
-                platform.playerJumpedOn()
-                
-                let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
-                
-                updateScore(with: newScore)
+                if platform.hasNotBeenJumpedOn {
+                    platform.playNoteSound()
+                    
+                    platform.playerJumpedOn()
+                    
+                    let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
+                    
+                    updateScore(with: newScore)
+                }
             }
         }
+        
+    }
+    
+    private func checkIfPlayerIsOnTop(contactInfo: SKPhysicsContact) -> Bool {
+        guard let bodyA = contactInfo.bodyA.node, let bodyB = contactInfo.bodyB.node else { return false }
+        
+        let isGroundContact = bodyA.name == NodeNames.ground.rawValue || bodyB.name == NodeNames.ground.rawValue
+        
+        if isGroundContact { return true }
+        
+        return bodyA.position.y > bodyB.position.y  // Player is always bodyA
     }
     
     //MARK: - Score and Feedback
@@ -90,8 +105,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func showFeedback(for score: ScoreType) {
+        let newText = "\(score.rawValue)"
+        
         self.scoreFeedback.isHidden.toggle()
-        self.scoreFeedback.changeText(with: score.rawValue)
+        self.scoreFeedback.changeText(with: newText)
         
         let scaleAction = SKAction.scale(by: 1.5, duration: 0.5)
         let fadeOut = SKAction.fadeAlpha(to: 0, duration: 2)
