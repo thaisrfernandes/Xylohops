@@ -20,7 +20,6 @@
 		8982954026EEBE9500B75BFE /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982953F26EEBE9500B75BFE /* MainMenu.swift */; };
 		8982954326EEBF4800B75BFE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982954226EEBF4800B75BFE /* Button.swift */; };
 		8982954526EEBFA500B75BFE /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982954426EEBFA500B75BFE /* Manager.swift */; };
-		8982954826EEBFC600B75BFE /* MusicStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982954726EEBFC600B75BFE /* MusicStatus.swift */; };
 		8982954A26EEBFEA00B75BFE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982954926EEBFEA00B75BFE /* Extensions.swift */; };
 		8982954F26EECB0000B75BFE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982954E26EECB0000B75BFE /* DataManager.swift */; };
 		8982955126EECB4300B75BFE /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982955026EECB4300B75BFE /* Notes.swift */; };
@@ -50,7 +49,6 @@
 		8982953F26EEBE9500B75BFE /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		8982954226EEBF4800B75BFE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		8982954426EEBFA500B75BFE /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		8982954726EEBFC600B75BFE /* MusicStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStatus.swift; sourceTree = "<group>"; };
 		8982954926EEBFEA00B75BFE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8982954E26EECB0000B75BFE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8982955026EECB4300B75BFE /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				89D305D826EF075D00445893 /* Files */,
-				8982954726EEBFC600B75BFE /* MusicStatus.swift */,
 				8982955026EECB4300B75BFE /* Notes.swift */,
 			);
 			path = MusicNotes;
@@ -262,7 +259,6 @@
 				8982954F26EECB0000B75BFE /* DataManager.swift in Sources */,
 				8982952426EEBB4600B75BFE /* GameScene.swift in Sources */,
 				8982952626EEBB4600B75BFE /* GameViewController.swift in Sources */,
-				8982954826EEBFC600B75BFE /* MusicStatus.swift in Sources */,
 				8982954326EEBF4800B75BFE /* Button.swift in Sources */,
 				8982955326EECCD800B75BFE /* Score.swift in Sources */,
 				8982953626EEBB5500B75BFE /* Ground.swift in Sources */,
