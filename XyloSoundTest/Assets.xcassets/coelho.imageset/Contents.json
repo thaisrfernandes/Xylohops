@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "coelho.jpg",
+      "filename" : "rabbit static.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "rabbit static@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "rabbit static@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
