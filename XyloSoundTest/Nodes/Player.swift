@@ -10,7 +10,7 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
-    let playerSize = CGSize(width: 50, height: 69)
+    let playerSize = CGSize(width: 45, height: 62)
     let playerSpeed: CGFloat = 5
     var isJumping: Bool = false
     var lastTouchPoint: CGPoint?
@@ -18,7 +18,7 @@ class Player: SKSpriteNode {
     
     init() {
         let texture = SKTexture(imageNamed: "coelho")
-        let size = CGSize(width: 50, height: 69)
+        let size = playerSize
         
         super.init(texture: texture, color: .clear, size: size)
         
@@ -67,7 +67,6 @@ class Player: SKSpriteNode {
     }
     
     private func move(to position: CGFloat) {
-        
         let newPosition = self.position.x + position
         
         let maxRightX = ScreenSize.width/2
