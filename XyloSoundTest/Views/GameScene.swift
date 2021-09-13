@@ -10,7 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    private let notes: [Note] = [.A, .B, .C, .D]
+    private let notes: [Note] = [.A, .B]
     
     private var hasPlayedSound = false
     private var score: Int = 0 {
@@ -23,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var ground: Ground!
     private var player: Player!
-    private var platform: Platform!
+    private var platforms: PlatformsScenario!
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -31,11 +31,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.ground = Ground()
         self.player = Player()
-        self.platform = Platform(note: notes[0], position: CGPoint(x: ScreenSize.width/4, y: -(ScreenSize.height/2.4)))
+        self.platforms = PlatformsScenario(notes: notes)
         
         addChild(ground)
         addChild(player)
-        addChild(platform)
+        addChild(platforms)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 enum Note: String {
-    case C = "C" //dó
-    case D = "D" //ré
-    case E = "E" //mi
-    case F = "F" //fa
-    case G = "G" //sol
-    case A = "A" //la
-    case B = "B" //si
+    case C = "C" // dó
+    case D = "D" // ré
+    case E = "E" // mi
+    case F = "F" // fa
+    case G = "G" // sol
+    case A = "A" // la
+    case B = "B" // si
     
     var filename: String {
         switch self {
