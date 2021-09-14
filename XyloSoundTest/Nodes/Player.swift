@@ -24,6 +24,7 @@ class Player: SKSpriteNode {
         
         self.name = NodeNames.player.rawValue
         self.constraints = [.zRotation(SKRange(lowerLimit: 0, upperLimit: 0))]
+        self.position = CGPoint(x: 0, y: -(ScreenSize.height/2.6))
         
         setupPhysics()
         startDefaultJumping()

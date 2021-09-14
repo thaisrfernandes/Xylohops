@@ -20,11 +20,12 @@ class Platform: SKNode {
     
     var note: Note?
     
-    init(note: Note, position: CGPoint) {
+    init(note: Note) {
         super.init()
 
-        let width = CGFloat.random(in: 50...100)
-                
+        //let width = CGFloat.random(in: 50...100)
+        let width: CGFloat = 80
+        
         let size = CGSize(width: width, height: platformsHeight)
         
         self.playSound = SKAction.playSoundFileNamed(note.filename, waitForCompletion: false)
@@ -33,15 +34,14 @@ class Platform: SKNode {
         
         self.note = note
         
-        setUp(position: position)
+        setUp()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUp(position: CGPoint) {
-        platform.position = position
+    func setUp() {
         platform.zPosition = 1
         platform.name = NodeNames.platform.rawValue
 
