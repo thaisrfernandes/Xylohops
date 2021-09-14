@@ -12,7 +12,7 @@ class PlatformsScenario: SKSpriteNode {
     init(notes: [Note]) {
         let size = CGSize(width: ScreenSize.width, height: ScreenSize.height)
         
-        super.init(texture: nil, color: .black, size: size)
+        super.init(texture: nil, color: UIColor(named: "Background")!, size: size)
         
         var lastPosition = CGPoint(x: 0, y: -(ScreenSize.height/2.6))
         
