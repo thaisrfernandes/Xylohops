@@ -72,24 +72,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         let isPlayerOnTop: Bool = checkIfPlayerIsOnTop(contactInfo: contact)
-
-        //if isPlayerOnTop {
-        player.land()
         
-        if contact.bodyB.categoryBitMask == Bitmasks.platformCategory {
-            let platform = contact.bodyB.node!.parent! as! Platform
-                        
-            if platform.hasNotBeenJumpedOn {
-                platform.playNoteSound()
+        if isPlayerOnTop {
+            player.land()
+            
+            if contact.bodyB.categoryBitMask == Bitmasks.platformCategory {
+                let platform = contact.bodyB.node!.parent! as! Platform
                 
-                platform.playerJumpedOn()
-                
-                let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
-                
-                updateScore(with: newScore)
+                if platform.hasNotBeenJumpedOn {
+                    platform.playNoteSound()
+                    
+                    platform.playerJumpedOn()
+                    
+                    let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
+                    
+                    updateScore(with: newScore)
+                }
             }
         }
-        //}
     }
     
     private func checkIfPlayerIsOnTop(contactInfo: SKPhysicsContact) -> Bool {
@@ -99,7 +99,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if isGroundContact { return true }
         
-        return bodyA.position.y > bodyB.position.y  // Player is always bodyA
+        print("BODY A", bodyA.position.y)
+        print("BODY B", bodyB.position.y)
+        print("BODY B NAME", bodyB.name)
+        
+        return bodyA.position.y >= bodyB.position.y  // Player is always bodyA
     }
     
     //MARK: - Score and Feedback
