@@ -29,6 +29,7 @@
 		8982954F26EECB0000B75BFE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982954E26EECB0000B75BFE /* DataManager.swift */; };
 		8982955126EECB4300B75BFE /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982955026EECB4300B75BFE /* Notes.swift */; };
 		8982955326EECCD800B75BFE /* ScoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982955226EECCD800B75BFE /* ScoreType.swift */; };
+		899E3AA126F162A700A49B2D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899E3AA026F162A700A49B2D /* Launch Screen.storyboard */; };
 		89BD002726EFB1DD00D77CDB /* C.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002026EFB1DC00D77CDB /* C.wav */; };
 		89BD002826EFB1DD00D77CDB /* D.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002126EFB1DD00D77CDB /* D.wav */; };
 		89BD002926EFB1DD00D77CDB /* F.wav in Resources */ = {isa = PBXBuildFile; fileRef = 89BD002226EFB1DD00D77CDB /* F.wav */; };
@@ -63,6 +64,7 @@
 		8982954E26EECB0000B75BFE /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8982955026EECB4300B75BFE /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		8982955226EECCD800B75BFE /* ScoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreType.swift; sourceTree = "<group>"; };
+		899E3AA026F162A700A49B2D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		89BD002026EFB1DC00D77CDB /* C.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C.wav; sourceTree = "<group>"; };
 		89BD002126EFB1DD00D77CDB /* D.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D.wav; sourceTree = "<group>"; };
 		89BD002226EFB1DD00D77CDB /* F.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F.wav; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				8982952726EEBB4600B75BFE /* Main.storyboard */,
 				8982952A26EEBB4800B75BFE /* Assets.xcassets */,
 				8982952C26EEBB4800B75BFE /* Info.plist */,
+				899E3AA026F162A700A49B2D /* Launch Screen.storyboard */,
 			);
 			path = XyloSoundTest;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				8982952926EEBB4600B75BFE /* Main.storyboard in Resources */,
 				89BD002D26EFB1DD00D77CDB /* E.wav in Resources */,
 				89BD002926EFB1DD00D77CDB /* F.wav in Resources */,
+				899E3AA126F162A700A49B2D /* Launch Screen.storyboard in Resources */,
 				8982952B26EEBB4800B75BFE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
