@@ -31,8 +31,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var platforms: PlatformsScenario!
     private var leftWall: Wall!
     private var rightWall: Wall!
-    private var scoreFeedback: ScoreFeedback!
-    
     
     //MARK: - Setup
     
@@ -45,15 +43,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.platforms = PlatformsScenario(notes: notes)
         self.leftWall = Wall(isLeft: true)
         self.rightWall = Wall(isLeft: false)
-        self.scoreFeedback = ScoreFeedback()
-        scoreFeedback.isHidden = true
         
         addChild(ground)
         addChild(player)
         addChild(platforms)
         addChild(leftWall)
         addChild(rightWall)
-        addChild(scoreFeedback)
     }
     
     //MARK: - Touches
@@ -84,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     platform.playerJumpedOn()
                     
-                    let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
+                    let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player, on: self)
                     
                     updateScore(with: newScore)
                 }
@@ -112,18 +107,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func showFeedback(for score: ScoreType) {
-        let newText = "\(score.rawValue)"
-        
-        self.scoreFeedback.isHidden.toggle()
-        self.scoreFeedback.changeText(with: newText)
+        let scoreFeedback = ScoreFeedback(text: score.rawValue)
         
         let scaleAction = SKAction.scale(by: 1.5, duration: 0.5)
         let fadeOut = SKAction.fadeAlpha(to: 0, duration: 2)
         let sequence = SKAction.sequence([scaleAction, fadeOut])
         
-        self.scoreFeedback.run(sequence) {
-            self.scoreFeedback.changeText(with: "")
-            self.scoreFeedback.isHidden.toggle()
+        scoreFeedback.run(sequence) {
+            scoreFeedback.removeFromParent()
         }
+        
+        self.addChild(scoreFeedback)
     }
 }

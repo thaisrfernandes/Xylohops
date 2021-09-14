@@ -9,18 +9,20 @@ import Foundation
 import SpriteKit
 
 struct ScoreManager {
-    func calculateScore(platform: SKSpriteNode, player: Player) -> ScoreType {
-        let midpoint: CGFloat = platform.size.width / 2
-        let platformCenter: CGFloat = platform.position.x + midpoint
+    func calculateScore(platform: SKSpriteNode, player: Player, on scene: SKScene) -> ScoreType {
+        let platX = platform.convert(platform.position, to: scene).x
         
-        let playerPosInPlatform = player.position.x - platform.position.x + midpoint
+        let midpoint: CGFloat = platform.size.width / 2
+        let platformCenter: CGFloat = platX + midpoint
+        
+        let playerPosInPlatform = player.position.x - platX + midpoint
         let isPlayerOnRightSide: Bool = player.position.x + player.size.width > platformCenter
         
         let umterco = midpoint / 3
         
         if isPlayerOnRightSide {
             let perfectArea = midpoint + umterco
-            let goodArea = perfectArea + umterco
+            let goodArea = perfectArea + (umterco * 1.5)
             
             if playerPosInPlatform < perfectArea {
                 return .perfect
@@ -31,7 +33,7 @@ struct ScoreManager {
             }
         } else {
             let perfectArea = midpoint - umterco
-            let goodArea = perfectArea - umterco
+            let goodArea = perfectArea - (umterco * 1.5)
             
             if playerPosInPlatform > perfectArea {
                 return .perfect
