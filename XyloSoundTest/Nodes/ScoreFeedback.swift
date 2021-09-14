@@ -22,8 +22,9 @@ class ScoreFeedback: SKLabelNode {
     private func setup(text: String) {
         self.position = CGPoint(x: 0, y: ((ScreenSize.height / 2) - 150))
         
+        self.fontName = "Dogica_bold"
         self.color = .white
-        self.fontSize = 30
+        self.fontSize = 20
         self.zPosition = 2
         self.text = text
     }
