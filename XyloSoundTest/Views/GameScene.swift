@@ -97,9 +97,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let isGroundContact = bodyA.name == NodeNames.ground.rawValue || bodyB.name == NodeNames.ground.rawValue
         
-        print(bodyA.position.y, "bodyA.position.y")
-        print(bodyB.position.y, "bodyB.position.y")
-        
         if isGroundContact { return true }
         
         return bodyA.position.y > bodyB.position.y  // Player is always bodyA

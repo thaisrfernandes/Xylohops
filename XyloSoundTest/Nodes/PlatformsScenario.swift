@@ -18,7 +18,9 @@ class PlatformsScenario: SKSpriteNode {
         
         var lastPosition = CGPoint(x: 0, y: -(ScreenSize.height/2.6))
         
-        let minY: CGFloat = ScreenSize.height/8
+        let minY: CGFloat = ScreenSize.height/6.8
+        
+        let maxScreenX: CGFloat = ScreenSize.width / 2.2
         
         for index in 0...(notes.count-1) {
             let note = notes[index]
@@ -31,6 +33,17 @@ class PlatformsScenario: SKSpriteNode {
             var minX = lastPosition.x + middleOfPlatform
             var maxX = minX + platformSize
             
+            if maxX > maxScreenX {
+                maxX -= maxScreenX
+                minX -= maxScreenX
+            }
+            
+            print("------")
+            print("note", note.color.accessibilityName)
+            print("maxScreenX", maxScreenX)
+            print("maxX", maxX)
+            print("minX", minX)
+            
             var xValue: CGFloat = 0.0
             
             if Bool.random() == false {
@@ -42,15 +55,6 @@ class PlatformsScenario: SKSpriteNode {
                 xValue = CGFloat.random(in: minX...maxX)
             }
             
-            let maxRightX: CGFloat = ScreenSize.width / 2
-            let maxLeftX: CGFloat = -(maxRightX)
-
-            if xValue >= maxRightX {
-                xValue = maxRightX - platformSize
-                
-            } else if xValue <= maxLeftX {
-                xValue = maxLeftX + platformSize
-            }
             
             let yValue = index == 0 ? lastPosition.y : lastPosition.y + minY
 
