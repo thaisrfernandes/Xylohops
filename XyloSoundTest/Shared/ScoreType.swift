@@ -11,7 +11,7 @@ import UIKit
 enum ScoreType: String {
     case perfect = "Perfect"
     case good = "Good"
-    case bad = "Bad"
+    case bad = "Ok"
     
     var points: Int {
         switch self {
