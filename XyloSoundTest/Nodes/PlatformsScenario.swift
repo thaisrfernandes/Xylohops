@@ -10,7 +10,6 @@ import SpriteKit
 
 
 class PlatformsScenario: SKSpriteNode {
-    
     init(notes: [Note]) {
         let size = CGSize(width: ScreenSize.width, height: ScreenSize.height)
         
@@ -18,7 +17,7 @@ class PlatformsScenario: SKSpriteNode {
         
         var lastPosition = CGPoint(x: 0, y: -(ScreenSize.height/2.6))
         
-        let minY: CGFloat = ScreenSize.height/6.8
+        let minY: CGFloat = Player.playerSize.height * 2
         
         let maxScreenX: CGFloat = ScreenSize.width / 2.2
         
@@ -28,33 +27,31 @@ class PlatformsScenario: SKSpriteNode {
             let platform = Platform(note: note)
                    
             let platformSize = platform.platform.frame.width
-            let middleOfPlatform = platformSize / 2
+           // let middleOfPlatform = platformSize / 2
 
-            var minX = lastPosition.x + middleOfPlatform
-            var maxX = minX + platformSize
+            let minX = platformSize * 0.90
+            let maxX = minX + platformSize
             
-            if maxX > maxScreenX {
-                maxX -= maxScreenX
-                minX -= maxScreenX
+//            if maxX > maxScreenX {
+//                maxX -= maxScreenX
+//                minX -= maxScreenX
+//            }
+            
+            let xDelta: CGFloat = CGFloat.random(in: minX...maxX)
+            
+            var xValue: CGFloat = lastPosition.x + xDelta
+            
+            if !Bool.random() {
+                xValue = lastPosition.x - xDelta
             }
             
-            print("------")
-            print("note", note.color.accessibilityName)
-            print("maxScreenX", maxScreenX)
-            print("maxX", maxX)
-            print("minX", minX)
+            let safetyArea = platformSize * 0.8
             
-            var xValue: CGFloat = 0.0
-            
-            if Bool.random() == false {
-                minX *= -1
-                maxX *= -1
-                xValue = CGFloat.random(in: maxX...minX)
-                
-            } else {
-                xValue = CGFloat.random(in: minX...maxX)
+            if xValue > maxScreenX - safetyArea {
+                xValue = lastPosition.x - xDelta
+            } else if xValue < (-maxScreenX + safetyArea) {
+                xValue = lastPosition.x + xDelta
             }
-            
             
             let yValue = index == 0 ? lastPosition.y : lastPosition.y + minY
 

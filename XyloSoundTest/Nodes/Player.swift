@@ -10,7 +10,7 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
-    let playerSize = CGSize(width: 45, height: 62)
+    static let playerSize = CGSize(width: 45, height: 62)
     let playerSpeed: CGFloat = 5
     var isJumping: Bool = false
     var lastTouchPoint: CGPoint?
@@ -18,7 +18,7 @@ class Player: SKSpriteNode {
     
     init() {
         let texture = SKTexture(imageNamed: "coelho")
-        let size = playerSize
+        let size = Player.playerSize
         
         super.init(texture: texture, color: .clear, size: size)
         
@@ -35,7 +35,7 @@ class Player: SKSpriteNode {
     }
     
     private func setupPhysics() {
-        let physicsBody = SKPhysicsBody(rectangleOf: playerSize)
+        let physicsBody = SKPhysicsBody(rectangleOf: Player.playerSize)
         physicsBody.isDynamic = true
         physicsBody.usesPreciseCollisionDetection = true
         physicsBody.velocity = CGVector(dx: 10, dy: 10)
@@ -48,7 +48,7 @@ class Player: SKSpriteNode {
     }
     
     private func startDefaultJumping() {
-        let action = SKAction.repeatForever(SKAction.applyImpulse(CGVector(dx: 0, dy: 80), duration: 1.0))
+        let action = SKAction.repeatForever(SKAction.applyImpulse(CGVector(dx: 0, dy: Player.playerSize.height * 1.5), duration: 1.0))
         self.run(action)
     }
     
@@ -87,7 +87,7 @@ class Player: SKSpriteNode {
 
             self.removeAllActions()
             
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 80))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Player.playerSize.height * 1.5))
         }
     }
     
