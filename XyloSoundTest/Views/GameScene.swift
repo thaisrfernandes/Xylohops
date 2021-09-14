@@ -12,8 +12,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: - Properties
     
-    private let notes: [Note] = [.A, .B, .C, .D]
-        
+    private let notes: [Note] = TwinkleTwinkle().song
+    
     private var score: Int = 0 {
         didSet {
             if score > 0 {
@@ -28,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var ground: Ground!
     private var player: Player!
-    private var platform: Platform!
+    private var platforms: PlatformsScenario!
     private var leftWall: Wall!
     private var rightWall: Wall!
     private var scoreFeedback: ScoreFeedback!
@@ -42,7 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.ground = Ground()
         self.player = Player()
-        self.platform = Platform(note: notes[0], position: CGPoint(x: ScreenSize.width/4, y: -(ScreenSize.height/2.4)))
+        self.platforms = PlatformsScenario(notes: notes)
         self.leftWall = Wall(isLeft: true)
         self.rightWall = Wall(isLeft: false)
         self.scoreFeedback = ScoreFeedback()
@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(ground)
         addChild(player)
-        addChild(platform)
+        addChild(platforms)
         addChild(leftWall)
         addChild(rightWall)
         addChild(scoreFeedback)
@@ -72,31 +72,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         let isPlayerOnTop: Bool = checkIfPlayerIsOnTop(contactInfo: contact)
-        
-        if isPlayerOnTop {
-            player.land()
 
-            if contact.bodyB.categoryBitMask == Bitmasks.platformCategory {
-                let platform = contact.bodyB.node!.parent! as! Platform
+        //if isPlayerOnTop {
+        player.land()
+        
+        if contact.bodyB.categoryBitMask == Bitmasks.platformCategory {
+            let platform = contact.bodyB.node!.parent! as! Platform
+                        
+            if platform.hasNotBeenJumpedOn {
+                platform.playNoteSound()
                 
-                if platform.hasNotBeenJumpedOn {
-                    platform.playNoteSound()
-                    
-                    platform.playerJumpedOn()
-                    
-                    let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
-                    
-                    updateScore(with: newScore)
-                }
+                platform.playerJumpedOn()
+                
+                let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player)
+                
+                updateScore(with: newScore)
             }
         }
-        
+        //}
     }
     
     private func checkIfPlayerIsOnTop(contactInfo: SKPhysicsContact) -> Bool {
         guard let bodyA = contactInfo.bodyA.node, let bodyB = contactInfo.bodyB.node else { return false }
         
         let isGroundContact = bodyA.name == NodeNames.ground.rawValue || bodyB.name == NodeNames.ground.rawValue
+        
+        print(bodyA.position.y, "bodyA.position.y")
+        print(bodyB.position.y, "bodyB.position.y")
         
         if isGroundContact { return true }
         
