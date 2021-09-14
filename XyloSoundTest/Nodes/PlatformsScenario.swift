@@ -8,7 +8,6 @@
 import Foundation
 import SpriteKit
 
-
 class PlatformsScenario: SKSpriteNode {
     init(notes: [Note]) {
         let size = CGSize(width: ScreenSize.width, height: ScreenSize.height)
@@ -17,9 +16,9 @@ class PlatformsScenario: SKSpriteNode {
         
         var lastPosition = CGPoint(x: 0, y: -(ScreenSize.height/2.6))
         
-        let minY: CGFloat = Player.playerSize.height * 2
+        let minY: CGFloat = Player.playerSize.height * 2.5
         
-        let maxScreenX: CGFloat = ScreenSize.width / 2.2
+        let maxScreenX: CGFloat = ScreenSize.width / 2
         
         for index in 0...(notes.count-1) {
             let note = notes[index]
@@ -27,15 +26,9 @@ class PlatformsScenario: SKSpriteNode {
             let platform = Platform(note: note)
                    
             let platformSize = platform.platform.frame.width
-           // let middleOfPlatform = platformSize / 2
 
             let minX = platformSize * 0.90
             let maxX = minX + platformSize
-            
-//            if maxX > maxScreenX {
-//                maxX -= maxScreenX
-//                minX -= maxScreenX
-//            }
             
             let xDelta: CGFloat = CGFloat.random(in: minX...maxX)
             
@@ -46,8 +39,8 @@ class PlatformsScenario: SKSpriteNode {
             }
             
             let safetyArea = platformSize * 0.8
-            
-            if xValue > maxScreenX - safetyArea {
+                        
+            if xValue > (maxScreenX - safetyArea) {
                 xValue = lastPosition.x - xDelta
             } else if xValue < (-maxScreenX + safetyArea) {
                 xValue = lastPosition.x + xDelta
@@ -56,6 +49,12 @@ class PlatformsScenario: SKSpriteNode {
             let yValue = index == 0 ? lastPosition.y : lastPosition.y + minY
 
             let position = CGPoint(x: xValue, y: yValue)
+            
+            print(xValue, "xValue")
+            print(safetyArea, "safetyArea")
+            print(maxScreenX, "maxScreenX")
+            print(xDelta, "xDelta")
+            print(ScreenSize.width, "screen width")
             
             platform.position = position
             

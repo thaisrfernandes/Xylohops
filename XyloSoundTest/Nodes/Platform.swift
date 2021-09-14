@@ -23,14 +23,13 @@ class Platform: SKNode {
     init(note: Note) {
         super.init()
 
-        //let width = CGFloat.random(in: 50...100)
-        let width: CGFloat = 80
-        
-        let size = CGSize(width: width, height: platformsHeight)
-        
         self.playSound = SKAction.playSoundFileNamed(note.filename, waitForCompletion: false)
         
-        self.platform = SKSpriteNode(color: note.color, size: size)
+        let texture = SKTexture(imageNamed: note.texture)
+                
+        let size = CGSize(width: texture.size().width, height: texture.size().height)
+        
+        self.platform = SKSpriteNode(texture: texture, size: size)
         
         self.note = note
         
