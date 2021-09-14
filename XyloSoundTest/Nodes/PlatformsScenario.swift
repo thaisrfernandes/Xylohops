@@ -37,13 +37,7 @@ class PlatformsScenario: SKSpriteNode {
                 maxX -= maxScreenX
                 minX -= maxScreenX
             }
-            
-            print("------")
-            print("note", note.color.accessibilityName)
-            print("maxScreenX", maxScreenX)
-            print("maxX", maxX)
-            print("minX", minX)
-            
+
             var xValue: CGFloat = 0.0
             
             if Bool.random() == false {

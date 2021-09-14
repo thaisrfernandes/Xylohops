@@ -29,15 +29,15 @@ enum Note: String {
         }
     }
     
-    var color: UIColor {
+    var texture: String {
         switch self {
-            case .A: return .blue
-            case .B: return .red
-            case .C: return .orange
-            case .D: return .green
-            case .E: return .yellow
-            case .F: return .systemPink
-            case .G: return .purple
+            case .A: return "blue"
+            case .B: return "red"
+            case .C: return "orange"
+            case .D: return "green"
+            case .E: return "yellow"
+            case .F: return "pink"
+            case .G: return "purple"
         }
     }
 }
