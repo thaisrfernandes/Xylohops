@@ -99,11 +99,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if isGroundContact { return true }
         
-        print("BODY A", bodyA.position.y)
-        print("BODY B", bodyB.position.y)
-        print("BODY B NAME", bodyB.name)
+        let platformY = bodyB.convert(bodyB.position, to: self).y
         
-        return bodyA.position.y >= bodyB.position.y  // Player is always bodyA
+        return bodyA.position.y > platformY // Player is always bodyA
     }
     
     //MARK: - Score and Feedback

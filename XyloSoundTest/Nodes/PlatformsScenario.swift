@@ -10,7 +10,6 @@ import SpriteKit
 
 
 class PlatformsScenario: SKSpriteNode {
-    
     init(notes: [Note]) {
         let size = CGSize(width: ScreenSize.width, height: ScreenSize.height)
         
