@@ -15,6 +15,7 @@ class Platform: SKNode {
     var hasNotBeenJumpedOn: Bool = true
     
     var platform: SKSpriteNode = SKSpriteNode()
+    var topContact: SKNode = SKNode()
     
     private var playSound: SKAction!
     
@@ -32,7 +33,7 @@ class Platform: SKNode {
         self.platform = SKSpriteNode(texture: texture, size: size)
         
         self.note = note
-        
+                
         setUp()
     }
     
@@ -43,18 +44,24 @@ class Platform: SKNode {
     func setUp() {
         platform.zPosition = 1
         platform.name = NodeNames.platform.rawValue
-
-        let platformPhysicsBody = SKPhysicsBody(rectangleOf: platform.frame.size)
-        platformPhysicsBody.isDynamic = false
-
-        platformPhysicsBody.categoryBitMask = Bitmasks.platformCategory
-        platformPhysicsBody.collisionBitMask = Bitmasks.playerCategory
-        platformPhysicsBody.contactTestBitMask = Bitmasks.playerCategory
-        platformPhysicsBody.friction = 1
         
-        platform.physicsBody = platformPhysicsBody
+        topContact.zPosition = 1
+        topContact.name = NodeNames.platform.rawValue
+        
+        let topContactPhysics = SKPhysicsBody(rectangleOf: CGSize(width: platform.frame.width - 30, height: 1))
+        topContactPhysics.isDynamic = false
+        topContactPhysics.categoryBitMask = Bitmasks.platformCategory
+        topContactPhysics.collisionBitMask = Bitmasks.playerCategory
+        topContactPhysics.contactTestBitMask = Bitmasks.playerCategory
+        topContactPhysics.friction = 0.8
+        
+        let contactY = platform.position.y + (platform.size.height / 2)
+        
+        topContact.physicsBody = topContactPhysics
+        topContact.position = CGPoint(x: platform.position.x, y: contactY)
         
         self.addChild(platform)
+        self.addChild(topContact)
     }
     
     func playerJumpedOn() {
