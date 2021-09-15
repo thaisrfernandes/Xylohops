@@ -27,7 +27,7 @@ class DataManager {
         let currentHighScore = getHighScore(forLevelID: levelID)
         
         if newHighScore > currentHighScore {
-            userDefaults.setValue(newHighScore, forKey: highScoreKey)
+            userDefaults.setValue(newHighScore, forKey: "\(highScoreKey)\(levelID)")
         }
     }
     

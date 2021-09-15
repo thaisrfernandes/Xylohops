@@ -12,27 +12,46 @@ class GameOver: SKLabelNode {
     
     var title: SKLabelNode!
     var subtitle: SKLabelNode!
+    var highScore: SKLabelNode!
+    var group: SKNode!
     
     init(score: Int) {
         super.init()
-                
-        setUp(score: score)
+        
+        DispatchQueue.main.async { [weak self] in
+            let highScoreValue = DataManager.shared.getHighScore(forLevelID: 1)
+            
+            self?.setUp(score: score, highScoreValue: highScoreValue)
+        }
     }
     
-    func setUp(score: Int) {
-        let title = SKLabelNode(text: "Game Over")
+    func setUp(score: Int, highScoreValue: Int) {
+        title = SKLabelNode(text: "Game Over")
         title.fontName = "Dogica_bold"
         title.color = .white
         title.fontSize = 20
         
-        let subtitle = SKLabelNode(text: "Your score was \(score)")
+        group = SKNode()
+        group.position = CGPoint(x: 0, y: ((-ScreenSize.height) / 8))
+        
+        highScore = SKLabelNode(text: "High score: \(highScoreValue)")
+        highScore.name = "highScore"
+        highScore.fontName = "Dogica_bold"
+        highScore.color = .white
+        highScore.fontSize = 20
+        highScore.position = CGPoint(x: 0, y: 50)
+        
+        subtitle = SKLabelNode(text: "Your score: \(score)")
         subtitle.fontName = "Dogica_bold"
         subtitle.color = .white
         subtitle.fontSize = 20
-        subtitle.position = CGPoint(x: 0, y: ((-ScreenSize.height) / 8))
-        
+        subtitle.position = CGPoint(x: 0, y: 0)
+
         addChild(title)
-        addChild(subtitle)
+
+        group.addChild(subtitle)
+        group.addChild(highScore)
+        addChild(group)
     }
 
     
