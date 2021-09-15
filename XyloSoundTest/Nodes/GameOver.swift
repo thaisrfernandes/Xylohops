@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class GameOver: SKLabelNode {
+class GameOver: SKLabelNode, LabelSoundPlayer {
     
     var title: SKLabelNode!
     var subtitle: SKLabelNode!
@@ -22,6 +22,7 @@ class GameOver: SKLabelNode {
             let highScoreValue = DataManager.shared.getHighScore(forLevelID: 1)
             
             self?.setUp(score: score, highScoreValue: highScoreValue)
+            self?.playSound(named: "winSound")
         }
     }
     
@@ -53,8 +54,7 @@ class GameOver: SKLabelNode {
         group.addChild(highScore)
         addChild(group)
     }
-
-    
+        
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

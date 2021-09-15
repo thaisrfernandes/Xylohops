@@ -9,7 +9,6 @@ import Foundation
 import SpriteKit
 
 class EndGame: SKScene {
-    
     override func didMove(to view: SKView) {
         DataManager.shared.setHighScore(ScoreManager.shared.score, forLevelID: 1)
         

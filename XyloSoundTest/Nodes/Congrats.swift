@@ -8,8 +8,7 @@
 import Foundation
 import SpriteKit
 
-class Congrats: SKLabelNode {
-    
+class Congrats: SKLabelNode, LabelSoundPlayer {
     var title: SKLabelNode!
     var subtitle: SKLabelNode!
     var highScore: SKLabelNode!
@@ -24,6 +23,7 @@ class Congrats: SKLabelNode {
             let highScoreValue = DataManager.shared.getHighScore(forLevelID: 1)
             
             self?.setUp(score: score, highScoreValue: highScoreValue)
+            self?.playSound(named: "winSound")
         }
     }
     
@@ -55,7 +55,6 @@ class Congrats: SKLabelNode {
         group.addChild(highScore)
         self.addChild(group)
     }
-
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

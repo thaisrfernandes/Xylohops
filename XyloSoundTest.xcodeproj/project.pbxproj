@@ -14,6 +14,8 @@
 		0952E27926F284DB0083BEAD /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952E27826F284DB0083BEAD /* Sound.swift */; };
 		848AFBC426EFC78F0043D84C /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AFBC326EFC78F0043D84C /* ScoreManager.swift */; };
 		849EB68626F28A5E0084E92A /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849EB68526F28A5E0084E92A /* menuMusic.mp3 */; };
+		849EB68926F2969D0084E92A /* winSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 849EB68826F2969D0084E92A /* winSound.wav */; };
+		849EB68B26F297730084E92A /* LabelSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849EB68A26F297730084E92A /* LabelSoundPlayer.swift */; };
 		84FE2B8126EFC01D00EC0DAE /* ScoreFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE2B8026EFC01D00EC0DAE /* ScoreFeedback.swift */; };
 		893111A126F23D61001E756C /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893111A026F23D61001E756C /* GameOver.swift */; };
 		893111A326F27126001E756C /* Congrats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893111A226F27126001E756C /* Congrats.swift */; };
@@ -53,6 +55,8 @@
 		0952E27826F284DB0083BEAD /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		848AFBC326EFC78F0043D84C /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		849EB68526F28A5E0084E92A /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
+		849EB68826F2969D0084E92A /* winSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = winSound.wav; sourceTree = "<group>"; };
+		849EB68A26F297730084E92A /* LabelSoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSoundPlayer.swift; sourceTree = "<group>"; };
 		84FE2B8026EFC01D00EC0DAE /* ScoreFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreFeedback.swift; sourceTree = "<group>"; };
 		893111A026F23D61001E756C /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		893111A226F27126001E756C /* Congrats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Congrats.swift; sourceTree = "<group>"; };
@@ -114,6 +118,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		849EB68726F296890084E92A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				849EB68826F2969D0084E92A /* winSound.wav */,
+				849EB68526F28A5E0084E92A /* menuMusic.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		8982951126EEBB4600B75BFE = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +146,7 @@
 		8982951C26EEBB4600B75BFE /* XyloSoundTest */ = {
 			isa = PBXGroup;
 			children = (
+				849EB68726F296890084E92A /* Sounds */,
 				0952E27426F139410083BEAD /* dogicabold.otf */,
 				848AFBC226EFC77C0043D84C /* Managers */,
 				8982954D26EECAF500B75BFE /* Data */,
@@ -142,7 +156,6 @@
 				8982953926EEBB6200B75BFE /* Shared */,
 				8982953226EEBB5500B75BFE /* Nodes */,
 				8982954926EEBFEA00B75BFE /* Extensions.swift */,
-				849EB68526F28A5E0084E92A /* menuMusic.mp3 */,
 				8982951D26EEBB4600B75BFE /* AppDelegate.swift */,
 				8982952526EEBB4600B75BFE /* GameViewController.swift */,
 				8982952726EEBB4600B75BFE /* Main.storyboard */,
@@ -175,6 +188,7 @@
 				8982953A26EEBB6B00B75BFE /* NodeNames.swift */,
 				8982953C26EEBBA900B75BFE /* Bitmasks.swift */,
 				8982955226EECCD800B75BFE /* ScoreType.swift */,
+				849EB68A26F297730084E92A /* LabelSoundPlayer.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -296,6 +310,7 @@
 				8982952926EEBB4600B75BFE /* Main.storyboard in Resources */,
 				89BD002D26EFB1DD00D77CDB /* E.wav in Resources */,
 				89BD002926EFB1DD00D77CDB /* F.wav in Resources */,
+				849EB68926F2969D0084E92A /* winSound.wav in Resources */,
 				899E3AA126F162A700A49B2D /* Launch Screen.storyboard in Resources */,
 				8982952B26EEBB4800B75BFE /* Assets.xcassets in Resources */,
 			);
@@ -313,6 +328,7 @@
 				8982953B26EEBB6B00B75BFE /* NodeNames.swift in Sources */,
 				0952E27726F25A980083BEAD /* EndGame.swift in Sources */,
 				0952E26726EFD45C0083BEAD /* Wall.swift in Sources */,
+				849EB68B26F297730084E92A /* LabelSoundPlayer.swift in Sources */,
 				8982954F26EECB0000B75BFE /* DataManager.swift in Sources */,
 				8982952426EEBB4600B75BFE /* GameScene.swift in Sources */,
 				0952E27926F284DB0083BEAD /* Sound.swift in Sources */,
