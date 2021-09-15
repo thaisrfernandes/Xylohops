@@ -10,9 +10,11 @@ import SpriteKit
 
 class Ground: SKSpriteNode {
     init() {
-        let size = CGSize(width: ScreenSize.width, height: ScreenSize.height * 0.1)
+        let texture = SKTexture(imageNamed: "ground")
+
+        let size = CGSize(width: texture.size().width, height: texture.size().height)
         
-        super.init(texture: nil, color: .orange, size: size)
+        super.init(texture: texture, color: .clear, size: size)
                 
         setUp()
     }
@@ -22,7 +24,7 @@ class Ground: SKSpriteNode {
     }
     
     func setUp() {
-        self.position = CGPoint(x: 0, y: -(ScreenSize.height / 2))
+        self.position = CGPoint(x: 0, y: -(ScreenSize.height / 2.09))
         self.zPosition = 1
         self.name = NodeNames.ground.rawValue
         
