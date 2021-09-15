@@ -12,6 +12,7 @@
 		0952E27526F139440083BEAD /* dogicabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0952E27426F139410083BEAD /* dogicabold.otf */; };
 		848AFBC426EFC78F0043D84C /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AFBC326EFC78F0043D84C /* ScoreManager.swift */; };
 		84FE2B8126EFC01D00EC0DAE /* ScoreFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE2B8026EFC01D00EC0DAE /* ScoreFeedback.swift */; };
+		893111A126F23D61001E756C /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893111A026F23D61001E756C /* GameOver.swift */; };
 		894F088026F10AEB00A31732 /* PlatformsScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894F087F26F10AEB00A31732 /* PlatformsScenario.swift */; };
 		8982951E26EEBB4600B75BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982951D26EEBB4600B75BFE /* AppDelegate.swift */; };
 		8982952426EEBB4600B75BFE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8982952326EEBB4600B75BFE /* GameScene.swift */; };
@@ -46,6 +47,7 @@
 		0952E27426F139410083BEAD /* dogicabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dogicabold.otf; sourceTree = "<group>"; };
 		848AFBC326EFC78F0043D84C /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		84FE2B8026EFC01D00EC0DAE /* ScoreFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreFeedback.swift; sourceTree = "<group>"; };
+		893111A026F23D61001E756C /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		894F087F26F10AEB00A31732 /* PlatformsScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsScenario.swift; sourceTree = "<group>"; };
 		8982951A26EEBB4600B75BFE /* XyloSoundTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XyloSoundTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8982951D26EEBB4600B75BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				0952E26626EFD45C0083BEAD /* Wall.swift */,
 				84FE2B8026EFC01D00EC0DAE /* ScoreFeedback.swift */,
 				894F087F26F10AEB00A31732 /* PlatformsScenario.swift */,
+				893111A026F23D61001E756C /* GameOver.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				0952E26426EFC1760083BEAD /* TwinkleTwinkle.swift in Sources */,
 				8982952626EEBB4600B75BFE /* GameViewController.swift in Sources */,
 				8982954326EEBF4800B75BFE /* Button.swift in Sources */,
+				893111A126F23D61001E756C /* GameOver.swift in Sources */,
 				8982955326EECCD800B75BFE /* ScoreType.swift in Sources */,
 				894F088026F10AEB00A31732 /* PlatformsScenario.swift in Sources */,
 				8982953626EEBB5500B75BFE /* Ground.swift in Sources */,
