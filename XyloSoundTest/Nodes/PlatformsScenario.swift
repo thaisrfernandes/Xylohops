@@ -56,17 +56,9 @@ class PlatformsScenario: SKSpriteNode {
                 }
             }
             
-            
-            
             let yValue = index == 0 ? lastPosition.y : lastPosition.y + minY
 
             let position = CGPoint(x: xValue, y: yValue)
-            
-            print(xValue, "xValue")
-            print(safetyArea, "safetyArea")
-            print(maxScreenX, "maxScreenX")
-            print(xDelta, "xDelta")
-            print(ScreenSize.width, "screen width")
             
             platform.position = position
             
