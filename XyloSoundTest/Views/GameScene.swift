@@ -38,6 +38,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.physicsWorld.contactDelegate = self
         
+        self.backgroundColor = UIColor(named: "Background")!
+        
         self.ground = Ground()
         self.player = Player()
         self.platforms = PlatformsScenario(notes: notes)
@@ -118,5 +120,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         self.addChild(scoreFeedback)
+    }
+    
+    func animateScenario() {
+        self.platforms.position.y -= 2
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        animateScenario()
     }
 }
