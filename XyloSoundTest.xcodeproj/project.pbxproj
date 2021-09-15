@@ -13,6 +13,7 @@
 		0952E27726F25A980083BEAD /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952E27626F25A980083BEAD /* EndGame.swift */; };
 		0952E27926F284DB0083BEAD /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952E27826F284DB0083BEAD /* Sound.swift */; };
 		848AFBC426EFC78F0043D84C /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848AFBC326EFC78F0043D84C /* ScoreManager.swift */; };
+		849EB68626F28A5E0084E92A /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 849EB68526F28A5E0084E92A /* menuMusic.mp3 */; };
 		84FE2B8126EFC01D00EC0DAE /* ScoreFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FE2B8026EFC01D00EC0DAE /* ScoreFeedback.swift */; };
 		893111A126F23D61001E756C /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893111A026F23D61001E756C /* GameOver.swift */; };
 		893111A326F27126001E756C /* Congrats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893111A226F27126001E756C /* Congrats.swift */; };
@@ -51,6 +52,7 @@
 		0952E27626F25A980083BEAD /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
 		0952E27826F284DB0083BEAD /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		848AFBC326EFC78F0043D84C /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
+		849EB68526F28A5E0084E92A /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
 		84FE2B8026EFC01D00EC0DAE /* ScoreFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreFeedback.swift; sourceTree = "<group>"; };
 		893111A026F23D61001E756C /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		893111A226F27126001E756C /* Congrats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Congrats.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				8982953926EEBB6200B75BFE /* Shared */,
 				8982953226EEBB5500B75BFE /* Nodes */,
 				8982954926EEBFEA00B75BFE /* Extensions.swift */,
+				849EB68526F28A5E0084E92A /* menuMusic.mp3 */,
 				8982951D26EEBB4600B75BFE /* AppDelegate.swift */,
 				8982952526EEBB4600B75BFE /* GameViewController.swift */,
 				8982952726EEBB4600B75BFE /* Main.storyboard */,
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89BD002B26EFB1DD00D77CDB /* A.wav in Resources */,
+				849EB68626F28A5E0084E92A /* menuMusic.mp3 in Resources */,
 				0952E27526F139440083BEAD /* dogicabold.otf in Resources */,
 				89BD002A26EFB1DD00D77CDB /* G.wav in Resources */,
 				89BD002726EFB1DD00D77CDB /* C.wav in Resources */,
