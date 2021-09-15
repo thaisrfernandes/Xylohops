@@ -40,6 +40,7 @@ class MainMenu: SKScene {
         let buttonHeight = ScreenSize.height*83/844
         playButton.button.size = CGSize(width: buttonWidth, height: buttonHeight)
         playButton.position = CGPoint(x: 0, y: -ScreenSize.height/2 * 0.75)
+
         playButton.zPosition = 1
         addChild(playButton)
     }
