@@ -23,8 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var isGameOver: Bool = false {
         didSet {
             if isGameOver {
-                self.removeAllChildren()
-                Manager.shared.transition(self, toScene: .EndGame, transition: SKTransition.fade(withDuration: 1))
+                goToEndGame()
             }
         }
     }
@@ -32,7 +31,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var isGameWon: Bool = false {
         didSet {
             if isGameWon {
-                self.removeAllChildren()
+                ScoreManager.shared.hasWon = true
+                goToEndGame()
             }
         }
     }
@@ -53,7 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.physicsWorld.contactDelegate = self
-        
+                
         self.backgroundColor = UIColor(named: "Background")!
         
         self.ground = Ground()
@@ -117,6 +117,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let platformY = bodyB.convert(bodyB.position, to: self).y
         
         return bodyA.position.y > platformY // Player is always bodyA
+    }
+    
+    func goToEndGame() {
+        self.removeAllChildren()
+        Manager.shared.transition(self, toScene: .EndGame, transition: SKTransition.fade(withDuration: 1))
     }
     
     //MARK: - Score and Feedback

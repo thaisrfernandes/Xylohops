@@ -33,7 +33,7 @@ class MainMenu: SKScene {
     }
     
     func addPlayButton() {
-        let playButton = Button(imageNamed: "startButton", buttonAction: {
+        let playButton = Button(imageNamed: "StartButton", buttonAction: {
             Manager.shared.transition(self, toScene: .GameScene, transition: SKTransition.fade(withDuration: 1)) 
         })
         let buttonWidth = ScreenSize.width*276/390
