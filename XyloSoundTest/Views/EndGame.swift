@@ -27,28 +27,46 @@ class EndGame: SKScene {
     
     func isGameOver() {
         let gameOverLabel = GameOver(score: ScoreManager.shared.score)
-        gameOverLabel.position = CGPoint(x: 0, y: 200)
+        gameOverLabel.position = CGPoint(x: 0, y: ScreenSize.height/2*0.3)
         gameOverLabel.zPosition = 1
         addChild(gameOverLabel)
         
-        let playButton = Button(imageNamed: "coelho", buttonAction: { Manager.shared.startOver(self) })
-        playButton.button.size = CGSize(width: 50, height: 50)
-        playButton.position = CGPoint.zero
+        let buttonWidth = ScreenSize.width*142/390
+        let buttonHeight = ScreenSize.height*45/844
+        
+        let playButton = Button(imageNamed: "restartButton", buttonAction: { Manager.shared.startOver(self) })
+        playButton.button.size = CGSize(width: buttonWidth, height: buttonHeight)
+        playButton.position = CGPoint(x: ScreenSize.width/2*0.45, y: -ScreenSize.height/2*0.5)
         playButton.zPosition = 1
         addChild(playButton)
+        
+        let exitButton = Button(imageNamed: "exitButton", buttonAction: { Manager.shared.transition(self, toScene: .MainMenu) })
+        exitButton.button.size = CGSize(width: buttonWidth, height: buttonHeight)
+        exitButton.position = CGPoint(x: -ScreenSize.width/2*0.45, y: -ScreenSize.height/2*0.5)
+        exitButton.zPosition = 1
+        addChild(exitButton)
     }
     
     func isGameWon() {
         let gameOverLabel = Congrats(score: ScoreManager.shared.score)
-        gameOverLabel.position = CGPoint(x: 0, y: 200)
+        gameOverLabel.position = CGPoint(x: 0, y: ScreenSize.height/2*0.3)
         gameOverLabel.zPosition = 1
         addChild(gameOverLabel)
         
-        let playButton = Button(imageNamed: "coelho", buttonAction: { Manager.shared.startOver(self) })
-        playButton.button.size = CGSize(width: 50, height: 50)
-        playButton.position = CGPoint.zero
+        let buttonWidth = ScreenSize.width*139.5/390
+        let buttonHeight = ScreenSize.height*42/844
+        
+        let playButton = Button(imageNamed: "restartButton", buttonAction: { Manager.shared.startOver(self) })
+        playButton.button.size = CGSize(width: buttonWidth, height: buttonHeight)
+        playButton.position = CGPoint(x: ScreenSize.width/2*0.45, y: -ScreenSize.height/2*0.5)
         playButton.zPosition = 1
         addChild(playButton)
+        
+        let exitButton = Button(imageNamed: "exitButton", buttonAction: { Manager.shared.transition(self, toScene: .MainMenu) })
+        exitButton.button.size = CGSize(width: buttonWidth, height: buttonHeight)
+        exitButton.position = CGPoint(x: -ScreenSize.width/2*0.45, y: -ScreenSize.height/2*0.5)
+        exitButton.zPosition = 1
+        addChild(exitButton)
     }
    
 }
