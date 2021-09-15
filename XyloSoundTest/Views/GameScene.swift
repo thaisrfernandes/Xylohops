@@ -14,6 +14,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private let notes: [Note] = TwinkleTwinkle().song
     
+    private var hideGround: Bool = false {
+        didSet {
+            self.ground.removeFromParent()
+        }
+    }
+    
     private var score: Int = 0 {
         didSet {
             if score > 0 {
@@ -128,5 +134,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         animateScenario()
+                        
+        if !hideGround && self.platforms.position.y < (-(ScreenSize.height/2.2)) {
+            self.hideGround = true
+        }
     }
 }
