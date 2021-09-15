@@ -12,7 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: - Properties
     
-    private let notes: [Note] = TwinkleTwinkle().song
+    private let notes: [Note] = [.A, .B]
     
     private var hideGround: Bool = false {
         didSet {
@@ -20,20 +20,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    private var score: Int = 0 {
+    private var isGameOver: Bool = false {
         didSet {
-            if score > 0 {
-                print("score", score)
+            if isGameOver {
+                goToEndGame()
             }
         }
     }
     
-    private var isGameOver: Bool = false {
+    private var isGameWon: Bool = false {
         didSet {
-            if isGameOver {
-                self.removeAllChildren()
-                let gameOverLabel = GameOver(score: score)
-                addChild(gameOverLabel)
+            if isGameWon {
+                ScoreManager.shared.hasWon = true
+                goToEndGame()
             }
         }
     }
@@ -55,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -30)
         self.physicsWorld.contactDelegate = self
-        
+                
         self.backgroundColor = UIColor(named: "Background")!
         
         self.ground = Ground()
@@ -72,17 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //MARK: - Touches
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        if isGameOver {
-            let newScene = GameScene(size: self.size)
-            let animation = SKTransition.fade(withDuration: 1.0)
-            self.view?.presentScene(newScene, transition: animation)
-
-            isGameOver = false
-        }
-        
         guard let touchPoint = touches.first?.location(in: self) else { return }
         player.jump(touchPoint: touchPoint)
     }
@@ -93,7 +82,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //MARK: - Contact Logic
-    
     func didBegin(_ contact: SKPhysicsContact) {
         let isPlayerOnTop: Bool = checkIfPlayerIsOnTop(contactInfo: contact)
         
@@ -108,9 +96,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     platform.playerJumpedOn()
                     
-                    let newScore = scoreManager.calculateScore(platform: platform.platform, player: self.player, on: self)
+                    let newScore = ScoreManager.shared.calculateScore(platform: platform.platform, player: self.player, on: self)
                     
                     updateScore(with: newScore)
+                }
+                
+                if !isGameWon && platform == platforms.children[platforms.children.count-1] {
+                    self.isGameWon = true
                 }
             }
         }
@@ -128,10 +120,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return bodyA.position.y > platformY // Player is always bodyA
     }
     
-    //MARK: - Score and Feedback
+    func goToEndGame() {
+        self.removeAllChildren()
+        Manager.shared.transition(self, toScene: .EndGame, transition: SKTransition.fade(withDuration: 1))
+    }
     
+    //MARK: - Score and Feedback
     private func updateScore(with newScore: ScoreType) {
-        self.score += newScore.points
+        ScoreManager.shared.score += newScore.points
         showFeedback(for: newScore)
     }
     
@@ -165,5 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if player.position.y < (-(ScreenSize.height/2)) {
             self.isGameOver = true
         }
+        
+        
     }
 }
