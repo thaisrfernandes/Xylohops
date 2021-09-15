@@ -53,7 +53,7 @@ class Platform: SKNode {
         topContactPhysics.categoryBitMask = Bitmasks.platformCategory
         topContactPhysics.collisionBitMask = Bitmasks.playerCategory
         topContactPhysics.contactTestBitMask = Bitmasks.playerCategory
-        topContactPhysics.friction = 0.8
+        topContactPhysics.affectedByGravity = false
         
         let contactY = platform.position.y + (platform.size.height / 2)
         

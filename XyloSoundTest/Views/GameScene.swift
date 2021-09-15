@@ -53,6 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -30)
         self.physicsWorld.contactDelegate = self
         
         self.backgroundColor = UIColor(named: "Background")!
@@ -149,8 +150,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: - Scenario Animation
+    
     func animateScenario() {
-        self.platforms.position.y -= 2
+        self.platforms.position.y -= 3
     }
     
     override func update(_ currentTime: TimeInterval) {
