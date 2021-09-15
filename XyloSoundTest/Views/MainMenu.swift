@@ -17,7 +17,7 @@ class MainMenu: SKScene {
     
     func addPlayButton() {
         let playButton = Button(imageNamed: "coelho", buttonAction: {
-            Manager.shared.transition(self, toScene: .PlayerScene, transition: SKTransition.fade(withDuration: 1))
+            Manager.shared.transition(self, toScene: .GameScene, transition: SKTransition.fade(withDuration: 1)) 
             })
         playButton.button.size = CGSize(width: 50, height: 50)
         playButton.position = CGPoint.zero

@@ -11,7 +11,7 @@ import SpriteKit
 class Manager {
     
     enum SceneType {
-        case MainMenu, PlayerScene
+        case MainMenu, GameScene, EndGame
     }
     
     private init() {}
@@ -34,8 +34,10 @@ class Manager {
         switch sceneType {
         case .MainMenu:
             return MainMenu(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
-        case .PlayerScene:
+        case .GameScene:
             return GameScene(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
+        case .EndGame:
+            return EndGame(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         }
     }
     
@@ -48,5 +50,12 @@ class Manager {
             scene.scaleMode = .resizeFill
             fromScene.view?.presentScene(scene)
         }
+    }
+    
+    func startOver(_ fromScene: SKScene) {
+        ScoreManager.shared.score = 0 
+        let newScene = GameScene(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
+        let animation = SKTransition.fade(withDuration: 1.0)
+        fromScene.view?.presentScene(newScene, transition: animation)
     }
 }
