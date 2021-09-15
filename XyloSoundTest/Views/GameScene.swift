@@ -12,7 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: - Properties
     
-    private let notes: [Note] = [.A, .B]
+    private let notes: [Note] = TwinkleTwinkle().song
     
     private var hideGround: Bool = false {
         didSet {
