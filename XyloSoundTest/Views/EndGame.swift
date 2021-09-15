@@ -15,11 +15,31 @@ class EndGame: SKScene {
         
         self.backgroundColor = UIColor(named: "Background")!
         
-        isGameOver()
+        let hasWon = ScoreManager.shared.hasWon
+        
+        if hasWon {
+            isGameWon()
+            ScoreManager.shared.hasWon = false
+        } else {
+            isGameOver()
+        }
     }
     
     func isGameOver() {
         let gameOverLabel = GameOver(score: ScoreManager.shared.score)
+        gameOverLabel.position = CGPoint(x: 0, y: 200)
+        gameOverLabel.zPosition = 1
+        addChild(gameOverLabel)
+        
+        let playButton = Button(imageNamed: "coelho", buttonAction: { Manager.shared.startOver(self) })
+        playButton.button.size = CGSize(width: 50, height: 50)
+        playButton.position = CGPoint.zero
+        playButton.zPosition = 1
+        addChild(playButton)
+    }
+    
+    func isGameWon() {
+        let gameOverLabel = Congrats(score: ScoreManager.shared.score)
         gameOverLabel.position = CGPoint(x: 0, y: 200)
         gameOverLabel.zPosition = 1
         addChild(gameOverLabel)
