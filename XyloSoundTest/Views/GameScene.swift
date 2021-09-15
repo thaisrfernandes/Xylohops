@@ -75,7 +75,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if isGameOver {
-            //self.scene?.view = GameScene()
+            let newScene = GameScene(size: self.size)
+            let animation = SKTransition.fade(withDuration: 1.0)
+            self.view?.presentScene(newScene, transition: animation)
+
+            isGameOver = false
         }
         
         guard let touchPoint = touches.first?.location(in: self) else { return }
