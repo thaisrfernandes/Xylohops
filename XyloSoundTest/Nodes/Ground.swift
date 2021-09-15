@@ -24,8 +24,8 @@ class Ground: SKSpriteNode {
     }
     
     func setUp() {
-        self.position = CGPoint(x: 0, y: -(ScreenSize.height / 2.09))
-        self.zPosition = 1
+        self.position = CGPoint(x: 0, y: -(ScreenSize.height / 2.05))
+        self.zPosition = 5
         self.name = NodeNames.ground.rawValue
         
         let floorPhysicsBody = SKPhysicsBody(rectangleOf: self.frame.size)

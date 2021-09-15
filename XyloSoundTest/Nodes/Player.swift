@@ -48,7 +48,7 @@ class Player: SKSpriteNode {
     }
     
     private func startDefaultJumping() {
-        let action = SKAction.repeatForever(SKAction.applyImpulse(CGVector(dx: 0, dy: Player.playerSize.height * 1.5), duration: 1.0))
+        let action = SKAction.repeatForever(SKAction.applyImpulse(CGVector(dx: 0, dy: Player.playerSize.height * 1.3), duration: 1.0))
         self.run(action)
     }
     
@@ -87,7 +87,7 @@ class Player: SKSpriteNode {
 
             self.removeAllActions()
             
-            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Player.playerSize.height * 1.5))
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Player.playerSize.height * 1.3))
         }
     }
     

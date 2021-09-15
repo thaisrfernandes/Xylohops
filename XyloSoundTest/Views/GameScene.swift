@@ -14,6 +14,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private let notes: [Note] = TwinkleTwinkle().song
     
+    private var hideGround: Bool = false {
+        didSet {
+            self.ground.removeFromParent()
+        }
+    }
+    
     private var score: Int = 0 {
         didSet {
             if score > 0 {
@@ -37,6 +43,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.physicsWorld.contactDelegate = self
+        
+        self.backgroundColor = UIColor(named: "Background")!
         
         self.ground = Ground()
         self.player = Player()
@@ -118,5 +126,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         self.addChild(scoreFeedback)
+    }
+    
+    func animateScenario() {
+        self.platforms.position.y -= 2
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        animateScenario()
+                        
+        if !hideGround && self.platforms.position.y < (-(ScreenSize.height/2.2)) {
+            self.hideGround = true
+        }
     }
 }
