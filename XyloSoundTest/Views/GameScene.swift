@@ -28,6 +28,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    private var isGameOver: Bool = false {
+        didSet {
+            if isGameOver {
+                self.removeAllChildren()
+                let gameOverLabel = GameOver(score: score)
+                addChild(gameOverLabel)
+            }
+        }
+    }
+    
     private let scoreManager = ScoreManager()
     
     //MARK: - Nodes
@@ -37,6 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var platforms: PlatformsScenario!
     private var leftWall: Wall!
     private var rightWall: Wall!
+    private var scoreFeedback: ScoreFeedback!
     
     //MARK: - Setup
     
@@ -62,6 +73,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //MARK: - Touches
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if isGameOver {
+            let newScene = GameScene(size: self.size)
+            let animation = SKTransition.fade(withDuration: 1.0)
+            self.view?.presentScene(newScene, transition: animation)
+
+            isGameOver = false
+        }
+        
         guard let touchPoint = touches.first?.location(in: self) else { return }
         player.jump(touchPoint: touchPoint)
     }
@@ -115,28 +135,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func showFeedback(for score: ScoreType) {
-        let scoreFeedback = ScoreFeedback(text: score.rawValue)
+        self.scoreFeedback = ScoreFeedback(text: score.rawValue)
         
         let scaleAction = SKAction.scale(by: 1.5, duration: 0.5)
         let fadeOut = SKAction.fadeAlpha(to: 0, duration: 2)
         let sequence = SKAction.sequence([scaleAction, fadeOut])
         
         scoreFeedback.run(sequence) {
-            scoreFeedback.removeFromParent()
+            self.scoreFeedback.removeFromParent()
         }
         
         self.addChild(scoreFeedback)
     }
     
+    // MARK: - Scenario Animation
     func animateScenario() {
         self.platforms.position.y -= 2
     }
     
     override func update(_ currentTime: TimeInterval) {
         animateScenario()
-                        
+              
         if !hideGround && self.platforms.position.y < (-(ScreenSize.height/2.2)) {
             self.hideGround = true
+        }
+        
+        if player.position.y < (-(ScreenSize.height/2)) {
+            self.isGameOver = true
         }
     }
 }
