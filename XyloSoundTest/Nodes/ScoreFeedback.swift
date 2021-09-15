@@ -9,23 +9,24 @@ import Foundation
 import SpriteKit
 
 class ScoreFeedback: SKLabelNode {
-    override init() {
+    init(text: String) {
         super.init()
         
-        setup()
+        setup(text: text)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
+    private func setup(text: String) {
         self.position = CGPoint(x: 0, y: ((ScreenSize.height / 2) - 150))
         
+        self.fontName = "Dogica_bold"
         self.color = .white
-        self.fontSize = 35
+        self.fontSize = 20
         self.zPosition = 2
-        self.text = ""
+        self.text = text
     }
     
     func changeText(with text: String) {
