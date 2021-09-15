@@ -9,6 +9,9 @@ import Foundation
 import SpriteKit
 
 struct ScoreManager {
+    static var shared = ScoreManager()
+    var score: Int = 0
+    
     func calculateScore(platform: SKSpriteNode, player: Player, on scene: SKScene) -> ScoreType {
         let platX = platform.convert(platform.position, to: scene).x
         
