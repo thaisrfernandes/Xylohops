@@ -33,7 +33,7 @@ class Manager {
     func getScene(_ sceneType: SceneType) -> SKScene? {
         switch sceneType {
         case .MainMenu:
-            return MainMenu(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
+            return MainMenu(size: CGSize(width: ScreenSize.width, height: ScreenSize.height), displaySound: false)
         case .GameScene:
             return GameScene(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         case .EndGame:

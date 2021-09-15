@@ -12,11 +12,39 @@ class MainMenu: SKScene {
     
     private var background: SKSpriteNode = SKSpriteNode()
     
+    private var soundWarning: Sound!
+    
+    var displaySound: Bool = true
+    
+    init(size: CGSize, displaySound: Bool) {
+        super.init(size: size)
+        self.displaySound = displaySound
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMove(to view: SKView) {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
+        if displaySound {
+            self.soundWarning = Sound()
+            displaySoundWarning()
+        }
+        
         createBackground()
         addPlayButton()
+    }
+    
+    func displaySoundWarning() {
+        addChild(soundWarning)
+        let wait = SKAction.wait(forDuration: 4)
+        self.run(wait) {
+            self.soundWarning.run(SKAction.fadeAlpha(to: 0, duration: 1.0)) {
+                self.soundWarning.removeFromParent()
+            }
+        }
     }
     
     func createBackground() {

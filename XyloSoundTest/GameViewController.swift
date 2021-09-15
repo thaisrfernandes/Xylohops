@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            let scene = MainMenu(size: self.view.bounds.size)
+            let scene = MainMenu(size: self.view.bounds.size, displaySound: true)
             
             scene.scaleMode = .aspectFill
             
