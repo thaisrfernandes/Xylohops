@@ -11,6 +11,8 @@ import SpriteKit
 class EndGame: SKScene {
     
     override func didMove(to view: SKView) {
+        DataManager.shared.setHighScore(ScoreManager.shared.score, forLevelID: 1)
+        
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         self.backgroundColor = UIColor(named: "Background")!
@@ -29,6 +31,7 @@ class EndGame: SKScene {
         let gameOverLabel = GameOver(score: ScoreManager.shared.score)
         gameOverLabel.position = CGPoint(x: 0, y: ScreenSize.height/2*0.3)
         gameOverLabel.zPosition = 1
+                
         addChild(gameOverLabel)
         
         let buttonWidth = ScreenSize.width*142/390
