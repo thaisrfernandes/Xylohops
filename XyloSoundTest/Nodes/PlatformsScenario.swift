@@ -43,13 +43,13 @@ class PlatformsScenario: SKSpriteNode {
             let safetyArea = platformSize * 0.8
                         
             if xValue > (maxScreenX - safetyArea) {
-                if lastPosition.x < maxScreenX/8 && lastPosition.x > -maxScreenX/8 {
+                if lastPosition.x < maxScreenX/2.5 && lastPosition.x > -maxScreenX/2.5 {
                     xValue = lastPosition.x - xDelta + platformSize/2
                 } else {
                     xValue = lastPosition.x - xDelta
                 }
             } else if xValue < (-maxScreenX + safetyArea) {
-                if lastPosition.x < maxScreenX/8 && lastPosition.x > -maxScreenX/8 {
+                if lastPosition.x < maxScreenX/2.5 && lastPosition.x > -maxScreenX/2.5 {
                     xValue = lastPosition.x + xDelta - platformSize/2
                 } else {
                     xValue = lastPosition.x + xDelta
