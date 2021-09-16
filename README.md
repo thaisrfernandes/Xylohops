@@ -1,4 +1,4 @@
-#✨ Xylohops ✨
+# ✨ Xylohops ✨
 
 Imagine you have a dream, but people don't believe in your potential...
 
@@ -14,3 +14,6 @@ Help him play songs and show everyone that he can be anything he wants to!
 
 
 <img src="https://i.imgur.com/az2kZz8.png" width="220px" /> <img src="https://i.imgur.com/fNAwiG5.png" width="220px" /> <img src="https://i.imgur.com/39V9QoB.png" width="220px" /> 
+
+Designer: Caroline Varela
+Developers: Gabriela Zorzo, João Gabriel Cervo e Thaís Fernandes
