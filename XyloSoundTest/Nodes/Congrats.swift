@@ -28,12 +28,18 @@ class Congrats: SKLabelNode, LabelSoundPlayer {
     }
     
     func setUp(score: Int, highScoreValue: Int) {
-        let title = SKLabelNode(text: "Congratulations!")
-        title.fontName = "Dogica_bold"
-        title.color = .white
-        title.fontSize = 20
+        let title = SKLabelNode()
         
-        let subtitle = SKLabelNode(text: "Your score was \(score)")
+        let titleFont = UIFont(name: "Dogica_bold", size: 20)
+
+        title.attributedText = NSAttributedString(string: "Congratulations!",
+                                                  attributes: [.font: titleFont!,
+                                                               .foregroundColor: UIColor(named: "Secondary")!])
+
+        title.position = CGPoint(x: 0, y: 100)
+        
+        
+        let subtitle = SKLabelNode(text: "Your score: \(score)")
         subtitle.fontName = "Dogica_bold"
         subtitle.color = .white
         subtitle.fontSize = 20

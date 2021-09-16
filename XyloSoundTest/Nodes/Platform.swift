@@ -16,6 +16,7 @@ class Platform: SKNode {
     
     var platform: SKSpriteNode = SKSpriteNode()
     var topContact: SKNode = SKNode()
+    var playedSound: Bool = false
     
     private var playSound: SKAction!
     
@@ -71,6 +72,8 @@ class Platform: SKNode {
     }
     
     func playNoteSound() {
-        self.run(playSound)
+        self.run(playSound) {
+            self.playedSound = true
+        }
     }
 }

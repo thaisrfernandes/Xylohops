@@ -12,7 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: - Properties
     
-    private let notes: [Note] = TwinkleTwinkle().song
+    private let notes: [Note] = [.A, .B]
     
     private var hideGround: Bool = false {
         didSet {
@@ -101,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     updateScore(with: newScore)
                 }
                 
-                if !isGameWon && platform == platforms.children[platforms.children.count-1] {
+                if !isGameWon && platform == platforms.children[platforms.children.count-1] && platform.playedSound {
                     self.isGameWon = true
                 }
             }

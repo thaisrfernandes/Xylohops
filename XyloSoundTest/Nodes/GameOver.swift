@@ -22,15 +22,20 @@ class GameOver: SKLabelNode, LabelSoundPlayer {
             let highScoreValue = DataManager.shared.getHighScore(forLevelID: 1)
             
             self?.setUp(score: score, highScoreValue: highScoreValue)
-            self?.playSound(named: "winSound")
+            self?.playSound(named: "lossSound")
         }
     }
     
     func setUp(score: Int, highScoreValue: Int) {
-        title = SKLabelNode(text: "Game Over")
-        title.fontName = "Dogica_bold"
-        title.color = .white
-        title.fontSize = 20
+        let title = SKLabelNode()
+
+        let titleFont = UIFont(name: "Dogica_bold", size: 20)
+
+        title.attributedText = NSAttributedString(string: "Game Over",
+                                                  attributes: [.font: titleFont!,
+                                                               .foregroundColor: UIColor(named: "Secondary2")!])
+        
+        title.position = CGPoint(x: 0, y: 100)
         
         group = SKNode()
         group.position = CGPoint(x: 0, y: ((-ScreenSize.height) / 8))
