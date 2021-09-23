@@ -18,12 +18,11 @@ class MainMenu: SKScene {
     var displaySound: Bool = true
     
     var player: AVAudioPlayer?
-    let backURL = Bundle.main.url(forResource: "menuMusic", withExtension: "mp3")!
+    let backURL = Bundle.main.url(forResource: "menuMusic", withExtension: "wav")!
     
     init(size: CGSize, displaySound: Bool) {
         super.init(size: size)
         self.displaySound = displaySound
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,7 +62,7 @@ class MainMenu: SKScene {
             try AVAudioSession.sharedInstance().setActive(true)
             
             player = try AVAudioPlayer(contentsOf: backURL)
-        
+            
             player?.play()
         } catch {
             print(error)
